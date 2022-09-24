@@ -1,15 +1,15 @@
 {
-	"name": "kikai",
-	"version": "1.0.0",
-	"description": "A personal Discord.JS v14 bot template",
-	"main": "kikai.js",
+	"name": "clandestine",
+	"version": "2.0.0",
+	"description": "A confessions bot for What's The Tea?",
+	"main": "clandestine.js",
 	"scripts": {
-		"start": "node kikai.js",
-		"dev": "nodemon kikai.js"
+		"start": "node clandestine.js",
+		"dev": "nodemon clandestine.js"
 	},
 	"repository": {
 		"type": "git",
-		"url": "git+https://github.com/roeegh/kikai.git"
+		"url": "git+https://github.com/roeegh/Clandestine.git"
 	},
 	"author": {
 		"name": "Roeegh",
@@ -18,12 +18,12 @@
 	},
 	"license": "MIT",
 	"dependencies": {
-		"@discordjs/rest": "^1.0.0",
-		"discord-api-types": "^0.36.2",
-		"discord.js": "^14.0.2",
+		"@discordjs/rest": "^1.1.0",
+		"discord-api-types": "^0.36.3",
+		"discord.js": "^14.4.0",
 		"dotenv": "^16.0.2"
 	},
 	"devDependencies": {
-		"nodemon": "^2.0.19"
+		"nodemon": "^2.0.20"
 	}
 }
