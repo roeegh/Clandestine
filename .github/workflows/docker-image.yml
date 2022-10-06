@@ -9,10 +9,9 @@ on:
 jobs:
   Build:
     runs-on: ubuntu-latest
-
     steps:      
-    - uses: nightstory/replace-env@v1
     - name: Making ENV file
+      uses: nightstory/replace-env@v1
       with:
         input_file: .env.example
         output_file: .env
