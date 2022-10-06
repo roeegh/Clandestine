@@ -13,8 +13,8 @@ jobs:
     - name: Making ENV file
       uses: nightstory/replace-env@v1
       with:
-        input_file: '.env.example'
-        output_file: '.env'
+        input_file: './.env.example'
+        output_file: './.env'
       env:
         TOKEN: ${{ secrets.TOKEN }}
         GUILD: ${{ secrets.GUILD }}
