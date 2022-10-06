@@ -1,0 +1,26 @@
+name: Docker Image CI
+
+on:
+  push:
+    branches:
+    - release
+  workflow_dispatch:
+  
+jobs:
+  Build:
+    runs-on: ubuntu-latest
+
+    steps:      
+    - uses: nightstory/replace-env@v1
+    - name: Making ENV file
+      with:
+        input_file: .env.example
+        output_file: .env
+      env:
+        TOKEN: ${{ secrets.TOKEN }}
+        GUILD: ${{ secrets.GUILD }}
+        CLIENT: ${{ secrets.CLIENT }}
+      
+    - uses: actions/checkout@v3
+    - name: Build the Docker image
+      run: docker build . --file Dockerfile --tag ${GITHUB_REPOSITORY#*/}:latest
