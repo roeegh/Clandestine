@@ -11,14 +11,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:      
     - name: Making ENV file
-      uses: nightstory/replace-env@v1
-      with:
-        input_file: '.env.example'
-        output_file: '.env'
+      uses: vafinvr/template-env-action@master
       env:
         TOKEN: ${{ secrets.TOKEN }}
         GUILD: ${{ secrets.GUILD }}
         CLIENT: ${{ secrets.CLIENT }}
+      with:
+        filename: '.env.example'
       
     - uses: actions/checkout@v3
     - name: Build the Docker image
