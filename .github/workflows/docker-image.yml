@@ -21,3 +21,4 @@ jobs:
     - name: Build the Docker image
       run: 
         docker build . --file Dockerfile --tag $(echo ${GITHUB_REPOSITORY#*/} | tr '[:upper:]' '[:lower:]'):latest
+        ls -la
