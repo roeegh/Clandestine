@@ -1,5 +1,5 @@
 FROM node:latest
-WORKDIR .
+WORKDIR /usr/src/clandestine
 COPY package.json .
 RUN npm install
 CMD ["npm", "start"]
