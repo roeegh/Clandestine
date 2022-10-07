@@ -1,5 +1,5 @@
 FROM node:latest
-WORKDIR /usr/src/clandestine
+WORKDIR /home/ubuntu/Clandestine
 COPY package.json .
 RUN npm install
 CMD ["npm", "start"]
