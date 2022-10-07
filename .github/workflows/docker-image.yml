@@ -11,13 +11,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:      
     - name: Making ENV file
-      uses: vafinvr/template-env-action@master
-      env:
-        TOKEN: ${{ secrets.TOKEN }}
-        GUILD: ${{ secrets.GUILD }}
-        CLIENT: ${{ secrets.CLIENT }}
-      with:
-        filename: '.env.example'
+      run: 
+        touch .env
+        echo TOKEN=${{ secrets.TOKEN }} >> .env
+        echo GUILD=${{ secrets.GUILD }} >> .env
+        echo CLIENT=${{ secrets.CLIENT }} >> .env
       
     - uses: actions/checkout@v3
     - name: Build the Docker image
