@@ -26,4 +26,4 @@ jobs:
                 USERNAME: ${{ secrets.USER }}
                 PORT: ${{ secrets.PORT }}
                 KEY: ${{ secrets.KEY }}
-                script: ls
+                script: ls /home/ubuntu/Clandestine
