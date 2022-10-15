@@ -1,6 +1,6 @@
 name: Deploy
 
-on: [push, workflow_dispatch]
+on: [push]
 
 jobs:
   build:
@@ -15,4 +15,4 @@ jobs:
             username: ${{ secrets.USER }}
             key: ${{ secrets.KEY }}
             port: ${{ secrets.PORT }}
-            script: whoami
+            script: ls -la
