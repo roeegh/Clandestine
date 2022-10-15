@@ -16,15 +16,15 @@ jobs:
                 USERNAME: ${{ secrets.USER }}
                 PORT: ${{ secrets.PORT }}
                 KEY: ${{ secrets.KEY }}
-                source: "."
+                source: "./*"
                 target: "/home/ubuntu/Clandestine"
                 rm: true
 
           - name: Executing remote command
             uses: appleboy/ssh-action@master
             with:
-                host: ${{ secrets.HOST }}
-                username: ${{ secrets.USER }}
-                port: ${{ secrets.PORT }}
-                key: ${{ secrets.KEY }}
+                HOST: ${{ secrets.HOST }}
+                USERNAME: ${{ secrets.USER }}
+                PORT: ${{ secrets.PORT }}
+                KEY: ${{ secrets.KEY }}
                 script: ls -l
