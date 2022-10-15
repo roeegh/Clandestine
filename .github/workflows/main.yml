@@ -31,8 +31,9 @@ jobs:
                 KEY: ${{ secrets.KEY }}
                 script: |
                     cd /home/ubuntu/Clandestine
-                    rm .env.example .git* LICENSE README.md
-                    echo -e 'TOKEN=${{ secrets.CLIENT }}\nGUILD=${{ secrets.CLIENT }}\nClient=${{ secrets.CLIENT }}' >> .env
+                    rm .env.example LICENSE README.md
+                    rm -rf .git*
+                    echo -e 'TOKEN=${{ secrets.TOKEN }}\nGUILD=${{ secrets.GUILD }}\nClient=${{ secrets.CLIENT }}' >> .env
                     sudo rm -rf node_modules package-lock.json
                     sudo npm install
                     sudo pm2 kill
