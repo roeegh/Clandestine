@@ -8,14 +8,14 @@ jobs:
         
         steps:
           - uses: actions/checkout@v3
+          
           - name: Copy repository contents via scp
             uses: appleboy/scp-action@master
-            env:
-                host: ${{ secrets.HOST }}
-                username: ${{ secrets.USER }}
-                port: ${{ secrets.PORT }}
-                key: ${{ secrets.KEY }}
             with:
+                HOST: ${{ secrets.HOST }}
+                USERNAME: ${{ secrets.USER }}
+                PORT: ${{ secrets.PORT }}
+                KEY: ${{ secrets.KEY }}
                 source: "."
                 target: "/home/ubuntu/Clandestine"
                 rm: true
