@@ -1,23 +1,19 @@
 name: Deploying
 
 on:
-  push:
-    branches:
-      - main
+    push:
+        branches:
+            - main
 
 jobs:
-  deploy:
-    name: Deploy
-    runs-on: ubuntu-latest
+    deploy:
+        name: Deploy
+        runs-on: ubuntu-latest
 
-    steps:
-      - uses: a2m1/slim-ssh-action@master
-        with:
-          username: ubuntu
-          host: ${{ secrets.HOST }}
-          fingerprint: ${{ secrets.FINGERPRINT }}
-          key: ${{ secrets.KEY }}
-          debug: true
-          script: 
-            ls /home/ubuntu/
-            
+        steps:
+          - uses: appleboy/ssh-action@master
+            with:
+                host: ${{ secrets.HOST }}
+                username: ${{ secrets.USER }}
+                key: ${{ secrets.KEY }}
+                script: sh deploy.sh
