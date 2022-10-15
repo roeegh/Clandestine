@@ -8,11 +8,11 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: appleboy/ssh-action@master
+      - name: Executing remote command
+        uses: appleboy/ssh-action@master
         with:
             host: ${{ secrets.HOST }}
-            username: ${{ secrets.USER }}
-            key: ${{ secrets.KEY }}
-            port: ${{ secrets.PORT }}
-            debug: true
-            script: sh deploy.sh
+            USERNAME: ${{ secrets.USER }}
+            PORT: 22
+            KEY: ${{ secrets.KEY }}
+            script: ls
