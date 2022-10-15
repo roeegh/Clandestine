@@ -3,13 +3,12 @@ name: Deploy
 on: [push]
 
 jobs:
-    Deploy:
+    Transfer:
+        name: Transfer
         runs-on: ubuntu-latest
         
         steps:
-          - uses: actions/checkout@v3
-          
-          - name: Copy repository contents via scp
+          - name: Transfer Repository Content
             uses: appleboy/scp-action@master
             with:
                 HOST: ${{ secrets.HOST }}
@@ -19,12 +18,31 @@ jobs:
                 source: "./*"
                 target: "/home/ubuntu/Clandestine"
                 rm: true
-
-          - name: Executing remote command
+    Deploy:
+        name: Deploy
+        runs-on: ubuntu-latest
+        
+        steps:
+          - name: Deploy App
             uses: appleboy/ssh-action@master
             with:
                 HOST: ${{ secrets.HOST }}
                 USERNAME: ${{ secrets.USER }}
                 PORT: ${{ secrets.PORT }}
                 KEY: ${{ secrets.KEY }}
-                script: ls -l
+                script: |
+                    echo "Kill all the running PM2 actions"
+                    sudo pm2 kill
+
+                    echo "Jump to app folder"
+                    cd /home/ubuntu/Clandestine
+
+                    echo "Update app from Git"
+                    git pull
+
+                    echo "Install app dependencies"
+                    sudo rm -rf node_modules package-lock.json
+                    sudo npm install
+                    
+                    echo "Run new PM2 action"
+                    sudo pm2 start clandestine.js --name Clandestine
