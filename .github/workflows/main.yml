@@ -34,7 +34,7 @@ jobs:
                     rm .env.example LICENSE README.md
                     rm -rf .git*
                     echo -e 'TOKEN=${{ secrets.TOKEN }}\nGUILD=${{ secrets.GUILD }}\nClient=${{ secrets.CLIENT }}' >> .env
-                    sudo rm -rf node_modules package-lock.json
-                    sudo npm install
-                    sudo pm2 kill
-                    sudo pm2 start clandestine.js --name Clandestine
+                    rm -rf node_modules package-lock.json
+                    npm install
+                    pm2 kill
+                    pm2 start clandestine.js --name Clandestine
