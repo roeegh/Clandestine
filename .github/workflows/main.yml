@@ -1,32 +1,12 @@
 name: Deploy
 
-on: [push]
+on: [push, workflow_dispatch]
 
 jobs:
   build:
 
     runs-on: ubuntu-latest
 
-    steps:
-    - uses: actions/checkout@v1
-
-    - name: Copy repository contents via scp
-      uses: appleboy/scp-action@master
-      env:
-        HOST: ${{ secrets.HOST }}
-        USERNAME: ${{ secrets.USER }}
-        PORT: 22
-        KEY: ${{ secrets.KEY }}
-      with:
-        source: "."
-        target: "/home/ubuntu/Clandestine"
-        rm: true
-
-    - name: Executing remote command
-      uses: appleboy/ssh-action@master
-      with:
-        host: ${{ secrets.HOST }}
-        USERNAME: ${{ secrets.USER }}
-        PORT: 22
-        KEY: ${{ secrets.KEY }}
-        script: ls
+    steps: 
+    - name: Script
+      run: curl ifconfig.me
