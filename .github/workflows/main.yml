@@ -7,6 +7,10 @@ jobs:
 
     runs-on: ubuntu-latest
 
-    steps: 
-    - name: Script
-      run: curl ifconfig.me
+    steps:
+      - uses: appleboy/ssh-action@master
+        with:
+            host: ${{ secrets.HOST }}
+            username: ${{ secrets.USER }}
+            key: ${{ secrets.KEY }}
+            script: sh deploy.sh
