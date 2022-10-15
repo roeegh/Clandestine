@@ -3,8 +3,8 @@ name: Deploy
 on: [push]
 
 jobs:
-    Transfer:
-        name: Transfer
+    Deploy:
+        name: Deploy
         runs-on: ubuntu-latest
         
         steps:
@@ -15,7 +15,7 @@ jobs:
                 USERNAME: ${{ secrets.USER }}
                 PORT: ${{ secrets.PORT }}
                 KEY: ${{ secrets.KEY }}
-                source: "./*"
+                source: "*"
                 target: "/home/ubuntu/Clandestine"
                 rm: true
           - name: Deploy App
