@@ -21,6 +21,7 @@ jobs:
                 source: "*"
                 target: "/home/ubuntu/Clandestine"
                 rm: true
+                
           - name: Deploy App
             uses: appleboy/ssh-action@master
             with:
@@ -29,18 +30,10 @@ jobs:
                 PORT: ${{ secrets.PORT }}
                 KEY: ${{ secrets.KEY }}
                 script: |
-                    echo "Kill all the running PM2 actions"
-                    sudo pm2 kill
-
-                    echo "Jump to app folder"
                     cd /home/ubuntu/Clandestine
-
-                    echo "Update app from Git"
-                    git pull
-
-                    echo "Install app dependencies"
+                    rm .env.example .git* LICENSE README.md
+                    echo -e 'TOKEN=${{ secrets.CLIENT }}\nGUILD=${{ secrets.CLIENT }}\nClient=${{ secrets.CLIENT }}' >> .env
                     sudo rm -rf node_modules package-lock.json
                     sudo npm install
-                    
-                    echo "Run new PM2 action"
+                    sudo pm2 kill
                     sudo pm2 start clandestine.js --name Clandestine
