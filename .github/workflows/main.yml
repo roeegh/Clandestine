@@ -36,5 +36,6 @@ jobs:
                     echo -e 'TOKEN=${{ secrets.TOKEN }}\nGUILD=${{ secrets.GUILD }}\nClient=${{ secrets.CLIENT }}' >> .env
                     rm -rf node_modules package-lock.json
                     npm install
-                    pm2 kill
+                    pm2 delete Clandestine
                     pm2 start clandestine.js --name Clandestine
+					pm2 save
